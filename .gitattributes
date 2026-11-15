@@ -1,0 +1,15 @@
+# Luôn dùng LF trong working tree (Windows cũng vậy), tránh lỗi "bad interpreter ^M" trên WSL
+* text=auto eol=lf
+
+*.c    text eol=lf
+*.h    text eol=lf
+*.sh   text eol=lf
+Makefile text eol=lf
+*.md   text eol=lf
+
+# Tệp nhị phân
+*.png  binary
+*.jpg  binary
+*.pdf  binary
+*.docx binary
+*.pptx binary
