@@ -13,7 +13,7 @@
 
 | Họ tên | MSSV | Phụ trách |
 |---|---|---|
-| _(điền)_ | _(điền)_ | _(điền)_ |
+| Đinh Hữu Nhật Minh | 20235778 | Phía thiết bị (`device_sim`), các module nền tảng trong `common` |
 | _(điền)_ | _(điền)_ | _(điền)_ |
 
 ## Yêu cầu môi trường
@@ -28,7 +28,7 @@ sudo apt install build-essential gdb gcovr
 
 ## Build và chạy
 
-> Các lệnh dưới đây sẽ dùng được sau khi có `Makefile` (commit tiếp theo).
+> `make` và `make test` dùng được ngay. `device_sim` và `controller` sẽ build được khi có `main.c` tương ứng.
 
 ```bash
 make                # build device_sim, controller
@@ -63,7 +63,7 @@ docs/      báo cáo, slide, test case
 ## Tiến độ
 
 - [x] Thiết kế kiến trúc và giao thức
-- [ ] Khung dự án, Makefile, framework test
+- [x] Khung dự án, Makefile, framework test
 - [ ] Module `common`
 - [ ] Phía thiết bị
 - [ ] Phía controller

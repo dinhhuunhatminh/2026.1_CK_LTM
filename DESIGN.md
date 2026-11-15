@@ -371,32 +371,39 @@ Kết quả (bảng + biểu đồ) đưa vào báo cáo. Giới hạn 64 kết 
 
 ## 8. Phân công & kế hoạch commit
 
-Nhóm **2 người**: **A** và **B**. Phạm vi kiến thức: đã học tới **ghép kênh (select/poll)**, nên dùng `poll()` như thiết kế; **không** dùng fork/thread cho server (thread chỉ dùng trong chương trình test tải), **không** làm TLS/OpenSSL.
+Nhóm **2 người**:
+
+| Ký hiệu | Họ tên | MSSV |
+|---|---|---|
+| **A** | Đinh Hữu Nhật Minh | 20235778 |
+| **B** | Lại Việt Cường | _(điền)_ |
+
+Phạm vi kiến thức: đã học tới **ghép kênh (select/poll)**, nên dùng `poll()` như thiết kế; **không** dùng fork/thread cho server (thread chỉ dùng trong chương trình test tải), **không** làm TLS/OpenSSL.
 
 ### 8.1. Phân công dài hạn
 
-| | Người A | Người B |
+| | A – Đinh Hữu Nhật Minh | B – Lại Việt Cường |
 |---|---|---|
-| Nền tảng | tài liệu, `.gitignore`, `linebuf`, `util`, `simclock`, `log` | khung dự án, `Makefile`, `minitest.h`, `proto`, `netutil` |
+| Nền tảng | tài liệu, `.gitignore`, khung dự án, `Makefile`, `minitest.h`, `linebuf` | `proto`, `util`, `simclock`, `log`, `netutil` |
 | Phía thiết bị | `session`, `store`, `server.c` (poll), `dev_sensor`, `dev_pump`, `dev_fert`, `dev_light` | – |
 | Phía controller | – | `appid`, `garden`, `scan`, `client`, menu CLI |
 | Kiểm thử | unit test các module của mình, integration test phía device | unit test các module của mình, integration test controller, `loadtest.c` |
 | Tài liệu | báo cáo: chương giao thức & thiết bị | báo cáo: chương controller & kiểm thử; slide chia đôi |
 
-Quy ước: mỗi người commit bằng **tài khoản git của chính mình**, mỗi commit nhỏ, gồm code + test đi kèm, `make test` phải chạy xanh trước khi commit. Làm việc trên nhánh riêng, merge vào `main` qua pull request để người kia xem.
+Quy ước: mỗi người commit bằng **tài khoản git của chính mình**, mỗi commit nhỏ, gồm code + test đi kèm, `make test` phải chạy xanh trước khi commit. Cả hai đẩy thẳng lên `main`; **luôn `git pull` trước khi bắt đầu làm** để tránh xung đột, và chỉ `git add` đúng các file của commit đó.
 
-### 8.2. Hôm nay: 6 commit (mỗi người 3), xen kẽ, cách nhau ≥ 30 phút
+### 8.2. Hôm nay (15/11/2026): 6 commit, cách nhau ≥ 30 phút
 
 | Thứ tự | Người | Nội dung |
 |---|---|---|
-| 1 | A | `docs`: `De_bai.md`, `DESIGN.md`, `.gitignore`, `README.md` khung |
-| 2 | B | Khung dự án: thư mục, `Makefile` (build/test/coverage), `tests/minitest.h`, 1 test mẫu chạy trên WSL |
-| 3 | A | `common/linebuf` + unit test (xử lý truyền dòng) |
-| 4 | B | `common/proto` (parse lệnh, bảng mã phản hồi) + unit test |
-| 5 | A | `common/util`, `simclock`, `log` + unit test |
-| 6 | B | `common/netutil` (tạo socket, `send_all`, đọc có timeout) + test loopback |
+| 1 | A – Minh | `docs`: `De_bai.md`, `DESIGN.md`, `.gitignore`, `README.md` khung |
+| 2 | A – Minh | Khung dự án: thư mục, `Makefile` (build/test/coverage), `tests/minitest.h`, 1 test mẫu chạy trên WSL |
+| 3 | A – Minh | `common/linebuf` + unit test (xử lý truyền dòng); điền tên thành viên vào README; thêm `docs/THU_TU_COMMIT.md` |
+| 4 | B – Cường | `common/proto` (parse lệnh, bảng mã phản hồi) + unit test |
+| 5 | B – Cường | `common/util`, `simclock`, `log` + unit test |
+| 6 | B – Cường | `common/netutil` (tạo socket, `send_all`, đọc có timeout) + test loopback |
 
-Commit 1 trước, vì commit 2 cần thư mục và `.gitignore` từ commit 1. Các module hôm nay độc lập nhau nên hai người làm song song được, chỉ cần đẩy commit đúng thứ tự thời gian.
+Commit 1 đến 3 do A làm trước. B bắt đầu từ commit 4, sau khi `git pull` và cách commit 3 ít nhất 30 phút. Hướng dẫn chi tiết cho B: xem `docs/THU_TU_COMMIT.md`.
 
 ### 8.3. Các tuần sau (dự kiến)
 
