@@ -14,7 +14,7 @@
 | Họ tên | MSSV | Phụ trách |
 |---|---|---|
 | Đinh Hữu Nhật Minh | 20235778 | Phía thiết bị (`device_sim`), các module nền tảng trong `common` |
-| _(điền)_ | _(điền)_ | _(điền)_ |
+| Lại Việt Cường | _(điền)_ | Phía controller (`appid`, `garden`, `scan`, `client`, menu CLI), `proto`, `netutil` |
 
 ## Yêu cầu môi trường
 
@@ -28,7 +28,7 @@ sudo apt install build-essential gdb gcovr
 
 ## Build và chạy
 
-> `make` và `make test` dùng được ngay. `device_sim` và `controller` sẽ build được khi có `main.c` tương ứng.
+> Chạy trong WSL/Ubuntu. `make` và `make test` dùng được ngay. `device_sim` và `controller` sẽ build được khi có `main.c` tương ứng.
 
 ```bash
 make                # build device_sim, controller
@@ -64,8 +64,8 @@ docs/      báo cáo, slide, test case
 
 - [x] Thiết kế kiến trúc và giao thức
 - [x] Khung dự án, Makefile, framework test
-- [ ] Module `common`
-- [ ] Phía thiết bị
+- [x] Module `common` (linebuf, proto, util, simclock, log, netutil)
+- [ ] Phía thiết bị (đã xong: `session`)
 - [ ] Phía controller
 - [ ] Integration test, test chịu tải
 - [ ] Báo cáo, slide

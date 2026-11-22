@@ -18,7 +18,7 @@ COV_MIN ?= 0
 CFLAGS  := -std=c11 -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE \
            -Wall -Wextra -Wpedantic -Wshadow -Iinclude -Itests -MMD -MP
 LDFLAGS :=
-LDLIBS  :=
+LDLIBS  := -lm
 
 ifeq ($(COV),1)
 BUILD   := build/cov

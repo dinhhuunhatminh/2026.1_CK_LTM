@@ -28,3 +28,7 @@ Thumbs.db
 # Scratch
 *.tmp
 d.tmp
+
+# Tài liệu nội bộ của nhóm, không đẩy lên GitHub
+docs/THU_TU_COMMIT.md
+docs/local/

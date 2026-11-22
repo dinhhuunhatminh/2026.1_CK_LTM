@@ -120,7 +120,7 @@ device     → unicast về : DEVICE <device_id> <type> <tcp_port>\n
 `type` ∈ `SENSOR | PUMP | FERT | LIGHT`. Thông điệp sai định dạng bị bỏ qua (không trả lời).
 Controller gom phản hồi trong **2 giây**, hiển thị loại + ID, người dùng chọn thêm vào vườn.
 
-> **Rủi ro WSL2:** broadcast `255.255.255.255` giữa các process cùng máy có thể không tới do mạng ảo hóa. Cách chắc ăn: gửi SCAN tới cả `255.255.255.255` **và** `127.0.0.1:9999`. Sẽ kiểm chứng ngay ở commit đầu tiên có mạng; nếu cần sẽ thêm tùy chọn `--scan-host`.
+> **Đã kiểm chứng trên WSL2:** hai socket UDP cùng nghe cổng quét (`SO_REUSEADDR` + `SO_REUSEPORT`) đều nhận được gói gửi tới `255.255.255.255`. Ngược lại, gói gửi unicast tới `127.0.0.1:9999` chỉ tới **một** trong các socket (kernel chia tải giữa các socket cùng cổng). Vì vậy controller chỉ broadcast tới `255.255.255.255`, **không** gửi thêm tới `127.0.0.1`, để không bỏ sót hoặc trùng thiết bị. Địa chỉ và cổng quét để dạng tham số, phục vụ kiểm thử.
 
 ### 3.4. Kết nối & xác thực (TCP)
 
