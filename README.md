@@ -73,6 +73,6 @@ docs/      báo cáo, slide, test case
 - [x] Khung dự án, Makefile, framework test
 - [x] Module `common` (linebuf, proto, util, simclock, log, netutil)
 - [ ] Phía thiết bị (đã xong: `session`, `store`, `device` + `server` poll với các lệnh chung; còn `dev_sensor`, `dev_pump`, `dev_fert`, `dev_light`)
-- [ ] Phía controller
+- [ ] Phía controller (đã xong: `appid`, `garden`, `scan`, `client`; còn menu CLI)
 - [ ] Integration test, test chịu tải
 - [ ] Báo cáo, slide
