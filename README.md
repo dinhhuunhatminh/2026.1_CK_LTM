@@ -65,7 +65,7 @@ docs/      báo cáo, slide, test case
 - [x] Thiết kế kiến trúc và giao thức
 - [x] Khung dự án, Makefile, framework test
 - [x] Module `common` (linebuf, proto, util, simclock, log, netutil)
-- [ ] Phía thiết bị (đã xong: `session`)
+- [ ] Phía thiết bị (đã xong: `session`, `store`)
 - [ ] Phía controller
 - [ ] Integration test, test chịu tải
 - [ ] Báo cáo, slide
