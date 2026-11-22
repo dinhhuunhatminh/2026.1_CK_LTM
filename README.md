@@ -28,7 +28,7 @@ sudo apt install build-essential gdb gcovr
 
 ## Build và chạy
 
-> Chạy trong WSL/Ubuntu. `make` và `make test` dùng được ngay. `device_sim` và `controller` sẽ build được khi có `main.c` tương ứng.
+> Chạy trong WSL/Ubuntu. `make` và `make test` dùng được ngay. `device_sim` đã build được; `controller` sẽ build được khi có `main.c` tương ứng.
 
 ```bash
 make                # build device_sim, controller
@@ -47,14 +47,21 @@ Chạy thử bốn thiết bị và controller (mỗi lệnh một terminal):
 ./build/controller
 ```
 
-Có thể thử giao thức thủ công bằng `nc 127.0.0.1 7002`.
+Có thể thử giao thức thủ công bằng `nc 127.0.0.1 7002`, ví dụ:
+
+```
+CONNECT 9f3a1c0b7d2e4a58 1234
+<token nhận được> INFO
+```
+
+Tham số của `device_sim`: `--type --id --port` (bắt buộc), `--password` (bắt buộc ở lần chạy đầu), `--timescale`, `--state-dir`, `--log-dir`, `--bind`, `--scan-port`. Chạy `./build/device_sim --help` để xem chi tiết. Mật khẩu đã đổi được lưu trong `data/<ID>.state`, log ghi ở `logs/<ID>.log` (giờ UTC).
 
 ## Cấu trúc thư mục
 
 ```
 include/   header của các module
 src/common/      linebuf, proto, netutil, simclock, log, util
-src/device/      server poll(), session, store, dev_sensor/pump/fert/light
+src/device/      main, options, server poll(), device, session, store, dev_sensor/pump/fert/light
 src/controller/  menu CLI, garden, scan, client, appid
 tests/unit/ tests/integration/ tests/load/
 docs/      báo cáo, slide, test case
@@ -65,7 +72,7 @@ docs/      báo cáo, slide, test case
 - [x] Thiết kế kiến trúc và giao thức
 - [x] Khung dự án, Makefile, framework test
 - [x] Module `common` (linebuf, proto, util, simclock, log, netutil)
-- [ ] Phía thiết bị (đã xong: `session`, `store`)
+- [ ] Phía thiết bị (đã xong: `session`, `store`, `device` + `server` poll với các lệnh chung; còn `dev_sensor`, `dev_pump`, `dev_fert`, `dev_light`)
 - [ ] Phía controller
 - [ ] Integration test, test chịu tải
 - [ ] Báo cáo, slide
